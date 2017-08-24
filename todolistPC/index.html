@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+<body>
+<!--
+    1.添加事件
+    2.查看事件
+    3.操作事件状态
+    4.标记关键事件
+    5.查看已完成
+    6.清空已完成的
+-->
+<!--jQuery   iconfont    css3   localstrorage    div+css-->
+<section class="leftbar">
+    <h3>TODOLIST</h3>
+    <ul>
+        <li>查看待办事项</li>
+        <li>查看已完成事项</li>
+    </ul>
+</section>
+<div class="main">
+        <div class="container">
+            <div class="add item">
+                <h3>添加新的事项</h3>
+                <label>
+                    <textarea autofocus id="text" style=＂border:0;></textarea>
+                    <div class="notic notice"><span>00</span><span>/40</span></div>
+                </label>
+                <input type="button" value="提交" id="submit" class="btn" style="width:100px; height:50px;background:#00ff26;text-align: center;border: 0;display: block;margin:40px auto;border-radius:10px;color:#fff;font-size: 18px">
+                <div class="guanbi close">&#xe641;</div>
+            </div>
+            <div class="wait item">
+                <h3>未完成</h3>
+                <ul class="con">
+                   <!-- <li>
+                        <input type="checkbox" class="check">
+                        <p>aaaaaa11111111111111111111111111111111111111</p>
+                        <time>2017/8/11</time>
+                        <i></i>
+                    </li>-->
+                </ul>
+                <div class="bottom">
+                    <input type="button" value="移动到已完成" class="yidong movebtn btn">
+                    <input type="button" value="添加" class="tianjia btn addbtn">
+                </div>
+
+            </div>
+            <div class="done item">
+                <h3>已完成</h3>
+                <ul class="con">
+                    <!--<li>
+                        <input type="checkbox" style="position: relative;top:6px;">
+                        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1111111</p>
+                        <time>2017/8/11</time>
+                        <i></i>
+                    </li>-->
+                </ul>
+                <div class="bottom">
+                <input type="button" value="清除" class="qingchu btn clearbtn">
+                <input type="button" value="添加" class="tianjia btn addbtn">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    //文本内容
+    $("#text").on("keydown keyup",function(){
+        var l=$(this).val().length;
+        if(l>40){
+            l=40;
+           $(this).val(function(i,val){
+               alert("文字已超出")
+                return val.slice(0,40);
+            })
+        }
+        $(".notic span:first-child").text(function(){
+            return l<10?"0"+l:l;
+        })
+    })
+
+
+    //点击提交
+    $("#submit").click(function(){
+        var val=$("#text").val();
+        if(val==""){
+            alert("请输入内容");
+            return;
+        }
+        var data=getData();
+        var date=new Date();
+        var time=date.getTime();
+        data.push({text:val,time,isDone:false,isStar:false});
+        saveData(data);
+        alert("添加成功")
+        $("#text").val("");
+        $(".notice span:first-child").text("00");
+        reWrite();
+
+    })
+
+
+
+
+    //关闭添加界面
+    $(".guanbi").click(function(){
+        $(".add").slideUp(300);
+        $(".wait").delay(200).slideDown(300)
+    })
+
+
+    //获取信息部分
+  function getData(){
+        if(localStorage.todo){
+            return JSON.parse(localStorage.todo);
+        }else{
+            return [];
+        }
+    }
+
+    //保存信息部分
+    function saveData(data){
+       localStorage.todo=JSON.stringify(data);
+    }
+
+
+    //重绘页面
+    function reWrite(){
+        $(".item ul").empty();
+        var data=getData();
+        var str1="",str2="";
+        $.each(data,function(index,val){
+            if(val.isDone==false){
+                str1+=`<li id="${index}">
+                    <input type="checkbox">
+                    <p>${val.text}</p>
+                    <time><i>&#xe602;</i>${time(val.time)}</time>
+                `;
+                if(val.isStar){
+                    str1+=`<i class="active">&#xe601;</i></li>`;
+                }else{
+                    str1+=`<i>&#xe601;</i></li>`;
+                }
+            }else{
+                str2+=`<li id="${index}">
+                    <input type="checkbox">
+                    <p>${val.text}</p>
+                    <time><i>&#xe602;</i>${time(val.time)}</time>
+                    `;
+                if(val.isStar){
+                    str2+=`<i class="active">&#xe601</i></li>`;
+                }else{
+                    str2+=`<i>&#xe601</i></li>`;
+                }
+            }
+        })
+        $(".wait ul").html(str1);
+        $(".done ul").html(str2);
+    }
+    reWrite();
+
+
+
+    //移动到已完成
+    $(".movebtn").click(function(){
+        var data=getData();
+        $(".wait ul li").each(function(index,ele){
+            if($(this).find("input").prop("checked")){
+                var index=$(this).attr("id");
+                data[index].isDone=true;
+            }
+        })
+        saveData(data);
+        reWrite();
+    })
+
+
+
+    //删除已完成
+    $(".clearbtn").click(function(){
+        var data=getData();
+        $(".done ul li").each(function(index,value){
+            if($(this).find("input").prop("checked")){
+               var index =$(this).attr("id");
+                data[index].isDelete=true;
+            }
+        })
+        data=data.filter(function(ele){
+            return !ele.isDelete;
+        })
+        saveData(data);
+        reWrite();
+    })
+
+    //事件委派
+    $(".wait ul").on("click","i",function(){
+        var data=getData();
+        var index=$(this).parent().attr("id");
+        data[index].isStar=!data[index].isStar;
+        saveData(data);
+        reWrite();
+    })
+    $(".item ul").on("click","p",function(){
+        alert($(this).html());
+    })
+    console.log($("#text"));
+
+
+    //跳转到添加页面
+    $(".addbtn").click(function(){
+        $(".item").hide().siblings(".add").slideDown(500);
+    })
+
+
+
+
+    //时间函数
+    function time(ms){
+        var date=new Date();
+        date.setTime(ms);
+        var year=date.getFullYear();
+        var month=addZero(date.getMonth()+1)
+        var day=addZero(date.getDate());
+        var hour=addZero(date.getHours());
+        var min=addZero(date.getMinutes());
+        var sec=addZero(date.getSeconds());
+        return year+"/"+month+"/"+day+" "+hour+":"+min+":"+sec;
+    }
+    function addZero(num){
+        return num<10?"0"+num:num;
+    }
+
+    //选项卡
+    $(".leftbar ul li").click(function(){
+        var index=$(this).index();
+        $(".item").hide().eq(index+1).show();
+    })
+</script>
