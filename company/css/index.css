@@ -1,0 +1,463 @@
+*{
+    margin: 0;
+    padding:0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/*banner开始 */
+.unslider{
+    position: relative;
+}
+.banner{
+    width:100%;
+    height:610px;
+}
+.banner .imgbox a{
+    display: block;
+    width:100%;
+    height:100%;
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+.banner .imgbox .active{
+    z-index:1;
+    opacity: 1;
+}
+.banner .imgbox li{
+    position:absolute;
+    top:0;
+    left:0;
+}
+.banner a img{
+    height:610px;
+    width:100%;
+}
+.banner .top {
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+.banner .top .nav{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 20px;
+    z-index:5555;
+}
+.banner .logo{
+    text-align: center;
+}
+.banner .nav li{
+    float: left;
+    width: 110px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-right: 44px;
+    display: inline;
+}
+.banner .nav .nav1{
+    display: none;
+}
+.banner .nav a{
+    display: block;
+    height: 26px;
+    padding: 2px 0;
+    color: #ccc;
+}
+
+/*banner结束*/
+
+
+/*关于我们开始*/
+.mainbody {
+    width: 1200px;
+    padding: 24px 0;
+    margin: 0 auto;
+    min-height: 500px;
+}
+.mainbody .abouttitle{
+    width: 1200px;
+    text-align: center;
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+.mainbody .abouttitle h1{
+    color: #2c2c2c;
+    font-size: 36px;
+    line-height: 48px;
+}
+.mainbody .abouttitle h4{
+    color: #000;
+    font-size: 18px;
+    line-height: 44px;
+    font-weight: normal;
+}
+.mainbody .abouttitle h4 span{
+    color: #ffa800;
+}
+.mainbody .aboutpart{
+    width: 1200px;
+    padding: 50px 0 26px 0;
+}
+.mainbody .aboutpic{
+    float: left;
+    width: 594px;
+}
+.mainbody .aboutpic a{
+    display: block;
+    width:100%;
+    height:100%;
+}
+.mainbody .aboutword{
+    float: right;
+    width: 585px;
+    text-align: center;
+    margin-top: 28px;
+    line-height: 50px;
+    color: #2c2c2c;
+    font-size: 16px;
+}
+/*关于我们结束*/
+
+
+/*focus开始*/
+.focus{
+    width:100%;
+    position: relative;
+    min-width: 1200px;
+    height: 406px;
+    margin-bottom: 50px;
+}
+.focus .fcon{
+    width:100%;
+    height:406px;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.focus .fcon img{
+    width:100%;
+}
+.focus .focusbg{
+    width: 350px;
+    height: 259px;
+    padding-top: 50px;
+    background: url(../img/focus_bg.png) repeat;
+    position: absolute;
+    top: 35px;
+    right: 0;
+}
+.focus .focusbg .ftop{
+    width: 324px;
+    padding-bottom: 24px;
+    border-bottom: solid 1px #fff;
+    color: #fff;
+    margin: 0 auto 8px;
+}
+.focus .ftop img {
+    float: left;
+    width: 96px;
+    height: 96px;
+    border: solid 2px #a0a0a0;
+    border-radius: 2px;
+    margin: 0 8px;
+}
+.focus .ftop h4{
+    font-size: 18px;
+    font-weight: normal;
+}
+.focus .ftop p{
+    font-size: 14px;
+}
+.focus .ser {
+    width: 310px;
+    color: #fff;
+    font-size: 30px;
+    /*line-height: 50px;*/
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+.focus .ser span {
+    font-size: 22px;
+    line-height: 34px;
+}
+.focus .ser img {
+    width: 24px;
+    height: 17px;
+    margin: 0 0 6px 10px;
+}
+/*focus结束*/
+
+/*新闻中心开始*/
+
+.mainbody .news {
+    width: 1200px;
+    padding: 98px 0 30px 0;
+    overflow: hidden;
+}
+ .news ul {
+    width: 1269px;
+     overflow: hidden;
+}
+.news li {
+    float: left;
+    width: 354px;
+    margin-right: 69px;
+}
+.news li .newstop{
+    height: 60px;
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.news li .newstop span{
+    float: left;
+    font-size: 48px;
+    color: #666;
+    line-height: 46px;
+    padding-right: 12px;
+}
+.newstop h4 {
+    color: #333;
+    font-size:18px;
+    font-weight: normal;
+    line-height: 26px;
+}
+.news .newslist{
+    width: 346px;
+    margin: 0 auto;
+}
+.news .newslist li{
+    float: none;
+    width: 312px;
+    padding-left: 34px;
+    height: 52px;
+    line-height: 52px;
+    border-bottom: solid 2px #b2b2b2;
+    margin: 0 0 15px 0;
+    background: url(../img/news_icon.jpg) no-repeat left center;
+    font-size: 16px;
+}
+.news .newslist li a{
+    color:#666;
+}
+
+
+.picbg {
+    min-width: 1200px;
+    height: 230px;
+    padding-top: 82px;
+    background: url(../img/pic_bg.jpg) no-repeat center top;
+    margin-bottom: 46px;
+}
+.blk29 {
+    width: 1288px;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+}
+.blk29 .leftbtn{
+    background:url(../img/leftbotton.png) no-repeat;
+    left: 5px;
+    float: left;
+    cursor: pointer;
+    position: absolute;
+    top: 47px;
+    width: 44px;
+    height: 44px;
+}
+.blk29 .cont{
+    width: 1176px;
+    overflow: hidden;
+    margin: 0px auto;
+}
+.blk29 .bannerinner{
+    overflow: hidden;
+    zoom: 1;
+    width: 32766px;
+}
+
+.blk29 .box {
+    FLOAT: left;
+    WIDTH: 271px;
+    height: 149px;
+    margin-right: 31px;
+}
+.blk29 .box img{
+    display: inline;
+    width: 265px;
+    height: 143px;
+}
+.blk29 .rightbtn {
+    BACKGROUND: url(../img/rightbotton.png) no-repeat;
+    FLOAT: right;
+    RIGHT: 5px;
+    CURSOR: pointer;
+    POSITION: absolute;
+    TOP: 47px;
+    WIDTH: 44px;
+    HEIGHT: 44px;
+}
+/*新闻中心结束*/
+
+/*产品展示开始*/
+.product {
+    width: 1181px;
+    padding: 36px 0 28px 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.product ul {
+    width: 1216px;
+}
+.product li {
+    float: left;
+    width: 269px;
+    margin-right: 35px;
+    display: inline;
+    color: #666;
+    text-align: center;
+}
+.product .producttop{
+    width: 269px;
+    height: 428px;
+    background: #f6f6f6;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+}
+.product .producttop h4{
+    color: #333;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 60px 0 12px 0;
+    line-height: 28px;
+    font-weight: normal;
+}
+.product .producttop a{
+    display:block;
+    width:100%;
+    height:100%;
+}
+.product .producttop img{
+    display: inline;
+    width: 146px;
+    height: 246px;
+    margin-top: 38px;
+}
+.product h2{
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 42px;
+}
+.product h4 {
+    font-size: 16px;
+    color: #333;
+    font-weight: normal;
+    line-height: 36px;
+}
+.product h4 a{
+    color: #000;
+    text-decoration: none;
+}
+
+/*产品展示结束*/
+
+/*底部开始*/
+.contact_bg {
+    min-width: 1200px;
+    height: 805px;
+    background: url(../img/contact_bg.jpg) no-repeat center top #000;
+}
+.contact_part {
+    width: 1200px;
+    padding-top: 72px;
+    margin: 0 auto;
+}
+.contact_left {
+    float: left;
+    width: 565px;
+}
+.contact_right {
+    float: right;
+    width: 504px;
+}
+.idea_title {
+    color: #fff;
+    font-size: 30px;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+.idea_title h4 {
+    line-height: 46px;
+    padding-bottom: 6px;
+    background: url(../img/idea_line.jpg) no-repeat left bottom;
+    font-size: 14px;
+}
+.idea {
+    color: #fff;
+    font-size: 18px;
+    line-height: 28px;
+    padding: 14px 0;
+}
+.idea span {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.contact_tit {
+    width: 100%;
+    text-align: right;
+    color: #fff;
+    font-size: 16px;
+    /*font-weight: bold;*/
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+.contact_tit h1 {
+    font-size: 36px;
+    line-height: 56px;
+}
+.contact_tit h2 {
+    font-size: 18px;
+    line-height: 36px;
+}
+.contact {
+    width: 430px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 85px;
+}
+.contact p {
+    border-bottom: solid 1px #fff;
+    padding: 62px 0 12px 0;
+}
+
+.share {
+    float: right;
+    width: 177px;
+}
+.share li {
+    float: left;
+    width: 40px;
+    margin-left: 19px;
+}
+
+.copyright{
+    width:100%;
+    background: #000;
+    padding: 20px 0;
+    text-align: center;
+    height:50px;
+    color:#fff;
+    font-size: 18px;
+}
+/*底部结束*/

@@ -1,0 +1,227 @@
+*{
+    margin: 0;
+    padding:0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/*banner开始 */
+.unslider{
+    position: relative;
+}
+.banner{
+    width:100%;
+    height:610px;
+}
+.banner .imgbox a{
+    display: block;
+    width:100%;
+    height:100%;
+    opacity: 0;
+    transition:all 0.3s;
+}
+.banner .imgbox li{
+    position:absolute;
+    top:0;
+    left:0;
+}
+.banner a img{
+    height:610px;
+    width:100%;
+}
+.banner .imgbox .active{
+    z-index:1;
+    opacity: 1;
+}
+.banner .top {
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+.banner .nav{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 20px;
+}
+.banner .logo{
+    text-align: center;
+}
+.banner .nav li{
+    float: left;
+    width: 110px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-right: 44px;
+    display: inline;
+}
+.banner .nav .nav1{
+    display: none;
+}
+.banner .nav a{
+    display: block;
+    height: 26px;
+    padding: 2px 0;
+    color: #ccc;
+}
+
+/*产品展示开始*/
+.line {
+    min-width: 1200px;
+    padding: 28px 0;
+    background: url(../img/line.gif) no-repeat center bottom;
+    margin-bottom: 15px;
+}
+.abouttitle {
+    width: 1200px;
+    text-align: center;
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0 auto;
+    position: relative;
+}
+.abouttitle h1 {
+    color: #2c2c2c;
+    font-size: 36px;
+    line-height: 48px;
+}
+.abouttitle h4 {
+    color: #000;
+    font-size: 18px;
+    line-height: 44px;
+    font-weight: normal;
+}
+.abouttitle h4 span {
+    color: #ffa800;
+}
+.wz {
+    width: 420px;
+    text-align: right;
+    color: #aaa;
+    font-size: 14px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+}
+.wz a {
+    color: #aaa;
+}
+.wz span {
+    color: #0e0855;
+    font-weight: normal;
+}
+
+.mainbody {
+    width: 1200px;
+    padding: 24px 0;
+    margin: 0 auto;
+    min-height: 500px;
+}
+.protop {
+    width: 100%;
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 50px;
+}
+.protop a{
+    color:#333;
+}
+.banner .nav li{
+    float: left;
+    width: 110px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-right: 44px;
+    display: inline;
+}
+.banner .nav .nav1{
+    display: none;
+}
+.banner .nav a{
+    display: block;
+    height: 26px;
+    padding: 2px 0;
+    color: #ccc;
+}
+.line {
+    min-width: 1200px;
+    padding: 28px 0;
+    background: url(../img/line.gif) no-repeat center bottom;
+    margin-bottom: 15px;
+}
+.abouttitle {
+    width: 1200px;
+    text-align: center;
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0 auto;
+    position: relative;
+}
+.abouttitle h1 {
+    color: #2c2c2c;
+    font-size: 36px;
+    line-height: 48px;
+}
+.abouttitle h4 {
+    color: #000;
+    font-size: 18px;
+    line-height: 44px;
+    font-weight: normal;
+}
+.abouttitle h4 span {
+    color: #ffa800;
+}
+.wz {
+    width: 420px;
+    text-align: right;
+    color: #aaa;
+    font-size: 14px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+}
+.wz a {
+    color: #aaa;
+}
+.wz span {
+    color: #0e0855;
+    font-weight: normal;
+}
+
+.online{
+    width:1200px;
+    height:auto;
+    margin: 0 auto;
+    margin-top:60px;
+    margin-bottom: 50px;
+}
+.online p{
+    font-size: 14px;
+    margin-bottom:15px;
+}
+.online input{
+    height:20px;
+}
+textarea{
+    width:468px;
+    height:224px;
+
+}
+.copyright {
+    min-width: 1200px;
+    background: #000;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+
+}
