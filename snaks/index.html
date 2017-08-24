@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .scene {
+            width:500px;
+            height:500px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            background: url("img/bg_01.png") repeat;
+            background-size: contain;
+            position: relative;
+        }
+
+        .block {
+            width:25px;
+            height:25px;
+            box-sizing: border-box;
+            /*border: 1px solid #a4a4a4;*/
+            border-radius: 50%;
+            float: left;
+
+        }
+
+        .snackbody {
+            background:url("img/body.png");
+            background-size: 25px 25px;
+        }
+
+        .snackhead {
+            background:url("img/head.png");
+            background-size: 25px 25px;
+            transform:rotate(-90deg);
+        }
+
+        .food{
+            background:url("img/food.png");
+            background-size: 25px 25px;
+
+        }
+        .start{
+            width:100px;
+            height:50px;
+            position:absolute;
+            bottom:100px;
+            right:40px;
+            background:url("img/kaishi1_03.png");
+            background-size:100px 50px;
+
+        }
+        .zanting{
+            width:100px;
+            height:50px;
+            position:absolute;
+            bottom:40px;
+            right:40px;
+            background:url("img/kaishi2_03.png");
+            background-size:100px 50px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="scene">
+    <div class="start"></div>
+    <div class="zanting"></div>
+</div>
+
+</body>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    for (var i=0; i <20; i++) {
+        for (var j=0; j < 20; j++) {
+            $("<div></div>").addClass("block").attr("id", j + "-" + i).appendTo(".scene");
+        }
+    }
+    var snackArr=[{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}];
+    var snackHead=snackArr[snackArr.length - 1];
+    function drawSnack() {
+        $(".snackbody").removeClass("snackbody");
+        $(".snackhead").removeClass("snackhead");
+        $.each(snackArr, function (index, value) {
+            $("#" + value.x + "-" + value.y).addClass("snackbody");
+        });
+        $("#" + snackHead.x + "-" + snackHead.y).addClass("snackhead ");
+    }
+    drawSnack();
+    var dir="r";
+    function move() {
+        switch (dir) {
+            case "r":
+                snackHead={x: snackHead.x + 1, y: snackHead.y};
+                break;
+            case "l":
+                snackHead={x: snackHead.x - 1, y: snackHead.y};
+                break;
+            case "t":
+                snackHead={x: snackHead.x, y: snackHead.y - 1};
+                break;
+            case "b":
+                snackHead={x: snackHead.x, y: snackHead.y + 1};
+                break;
+        }
+        snackArr.push(snackHead);
+        var head=$("#"+snackHead.x+"-"+snackHead.y);
+        if(head.hasClass("snackbody")||head.length===0){
+            alert('游戏结束');
+            location.reload();
+        }
+        if(head.hasClass("food")){
+            head.removeClass("food");
+            createFood();
+        }else{
+            snackArr.shift();
+        }
+        drawSnack();
+    }
+    $(".start").click(function(){
+        t=setInterval(move,500);
+    })
+    $(".zanting").click(function(){
+        clearInterval(t);
+    })
+
+    $(document).keydown(function (e) {
+        switch (e.keyCode) {
+            case 65:
+            case 37:
+                dir="l";
+                break;
+            case 87:
+            case 38:
+                dir="t";
+                break;
+            case 68:
+            case 39:
+                dir="r";
+                break;
+            case 83:
+            case 40:
+                dir="b";
+                break;
+        }
+    });
+    function createFood() {
+        do {
+            var rx=Math.floor(Math.random() * 20);
+            var ry=Math.floor(Math.random() * 20);
+        }while($("#"+rx+"-"+ry).hasClass("snackbody"));
+        $("#"+rx+"-"+ry).addClass("food");
+    }
+    createFood();
+</script>
+</html>
