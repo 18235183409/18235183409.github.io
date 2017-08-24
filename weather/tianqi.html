@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    span,p,div{
+        color:#fff;
+    }
+    .box{
+        width:540px;
+        height:480px;
+        background:linear-gradient(#1F395F 0, #3481B9 100%);
+        margin: 0 auto;
+    }
+    .box>.top{
+        padding: 20px;
+    }
+    time,.kongqi{
+        color:#fff;
+        font-size: 12px;
+    }
+    .main ul{
+        display: flex;
+        justify-content: space-around;
+        width:100%;
+        margin-top: 30px;
+    }
+    .main li{
+        list-style: none;
+        height:185px;
+        width:100px;
+        border-right: 1px solid #3F5F84;
+    }
+    .main img{
+        display: block;
+        margin: 0 auto;
+    }
+    .main li:first-child{
+        width:130px;
+    }
+    .main li:last-child{
+        border-right: 0;
+    }
+    .zhexian{
+        width:100%;
+        /*height:120px;*/
+        background:#4076A2;
+        margin-top: 50px;
+        padding: 0px 30px;
+    }
+    .zhexian ul li{
+        width:100%;
+        height:35px;
+        border-bottom: 1px solid #6692B5;
+        line-height: 35px;
+    }
+    .zhexian ul li:last-child{
+        border-bottom: 0;
+    }
+    select{
+        width:50px;
+        margin-top: 5px;
+        float: left;
+        margin-right: 5px;
+    }
+    .temp,p{
+        color:#fff;
+        text-align: center;
+    }
+    .temp{
+        font-size: 22px;
+        margin-left: 10px;
+    }
+    .temp1{
+        margin-top: 10px;
+    }
+    .list:hover{
+        background:rgba(32,61,100,0.4);
+    }
+    .process{
+        position: fixed;
+        top:0;
+        left:0;
+        width:10px;
+        height:10px;
+        background:#000;
+    }
+</style>
+<body>
+        <div class="box">
+            <div class="top">
+                <time><span class="year"></span >       <span class="yue"></span>     <span class="ri"></span>  </time>
+                <div class="kongqi">实时空气质量:<span ></span></div>
+                <select name="" id="province">
+
+
+                </select>
+                <select name="" id="city">
+
+                </select>
+            </div>
+            <div class="main">
+                <ul>
+                    <li>
+                        <div class="img"><img src="" alt=""></div>
+                        <div style="overflow: hidden;text-align: center">
+                            <div class="temp" style="float: left;width:56px;height:42px;font-size:36px;"></div>
+                            <div style="float: left">
+                                <span class="top"style=" text-align: left"></span>
+                                <div class="bottom" style="text-align: center"></div>
+                            </div>
+                        </div>
+                        <p class="temp1"></p>
+                        <p class="wea"></p>
+                        <p class="feng"></p>
+                    </li>
+                    <li class="list">
+                        <p class="si"></p>
+                        <p class="siiriqi"></p>
+                        <div class="siimg"><img src="" alt=""></div>
+                        <p class="siwendu"></p>
+                        <p class="siwea"></p>
+                        <p class="sitianqi"></p>
+                    <li class="list">
+                        <p class="si"></p>
+                        <p class="siiriqi"></p>
+                        <div class="siimg"><img src="" alt=""></div>
+                        <p class="siwendu"></p>
+                        <p class="siwea"></p>
+                        <p class="sitianqi"></p>
+                    </li>
+                    <li class="list">
+                        <p class="si"></p>
+                        <p class="siiriqi"></p>
+                        <div class="siimg"><img src="" alt=""></div>
+                        <p class="siwendu"></p>
+                        <p class="siwea"></p>
+                        <p class="sitianqi"></p>
+                    </li>
+                    <li class="list">
+                        <p class="si"></p>
+                        <p class="siiriqi"></p>
+                        <div class="siimg"><img src="" alt=""></div>
+                        <p class="siwendu"></p>
+                        <p class="siwea"></p>
+                        <p class="sitianqi"></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="zhexian">
+                <ul class="a">
+                    <li class="li1"></li>
+                    <li class="li2"></li>
+                    <li class="li3"></li>
+                    <li class="li4"></li>
+                    <li class="li5"></li>
+                    <li class="li6"></li>
+                </ul>
+                <ul style="display: none" class="b">
+                    <li class="li7"></li>
+                    <li class="li8"></li>
+                    <li class="li9"></li>
+                    <li class="li10"></li>
+                    <li class="li11"></li>
+                    <li class="li12"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="process"></div>
+</body>
+<script src="jQuery1.10.2.js"></script>
+<script>
+    var provinces=[];
+    var citys=[];
+    var data=[];
+
+    $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",function(){
+        var city=remote_ip_info.city;
+        var province=remote_ip_info.province, city=remote_ip_info.city;
+        
+
+
+    });
+    var options=$("select option:selected");
+
+
+
+    $.ajax({
+        url:"http://api.jisuapi.com/weather/city",
+        data:{appkey:"b555dc24d7c382cc"},
+        dataType:"jsonp",
+        success:function(r){
+//            console.log(r);
+        data=r.result;
+        console.log(data);
+        provinces=$.grep(r.result,function(v,index){
+            if(v.parentid==="0"){
+                return true;
+            }
+        })
+        $.each(provinces,function(index,v){
+            $("<option></option>").html(v.city).val(v.cityid).appendTo("#province");
+        })
+
+    }
+    })
+
+    $("#province").on("change blur",function(){
+        var id=$(this).val();
+        citys=$.grep(data,function(value){
+            if(value.parentid===id){
+                return true;
+            }
+        });
+        $("#city").empty();
+        $.each(citys,function(index,v){
+            $("<option></option>").html(v.city).appendTo("#city");
+        })
+    });
+
+    $("#city").on("change blur",function(){
+        var city=$(this).val();
+        $.ajax({
+            url:"http://api.jisuapi.com/weather/query",
+            data:{city:city,appkey:"b555dc24d7c382cc"},
+            dataType:"jsonp",
+            success:function(r){
+                console.log(r);
+                var result=r.result;
+                    $(".year").html(`${result.city}`);
+                    $(".yue").html(`${result.date}`);
+                    $(".ri").html(`${result.week}`);
+                    $(".img").html(`<img src="img/weathercn/${result.img}.png">`);
+                    $(".temp").html(`${result.temp}`);
+                    $(".bottom").html(`${result.weather}`);
+                    $(".main .top").html("℃");
+                    var tem1=result.templow;
+                    var tem2=result.temphigh;
+                    $(".temp1").html(`${tem1} ~ ${tem2} ℃`);
+                    $(".feng").html(`${result.winddirect}`);
+                    $(".wea").html(`${result.weather}`);
+
+                    $(".kongqi span").html(`${result.aqi.quality}`);
+                    var list=$(".list");
+                    console.log(list);
+                    $.each(list,function(index,value){
+                        var i=index+1;
+                        console.log(value,index);
+                        var h=result.daily[i].night.templow;
+                        var d=result.daily[i].day.temphigh;
+                        $(this).find(".si").html(result.daily[i].week).parent().find(".siiriqi").html((result.daily[i].date).slice(5, 7) + "月" + (result.daily[i].date).slice(8, 10) + "日").parent()
+                            .find(".siimg>img").prop("src", "img/weathercn/" + result.daily[i].day.img + ".png").parent().parent()
+                           .find(".siwendu").html(h+"~"+d+"℃").parent().parent()
+//                            .find("#temphigh").html(result.daily[i].day.temphigh).parent().parent()
+//                            .find("#weather1").html(result.daily[i].day.weather).parent().parent()
+                            .find(".siwea").html(result.daily[i].day.weather).parent().parent()
+                            .find(".sitianqi").html(result.daily[i].day.winddirect).parent().parent()
+                    });
+
+
+                    $(".li1").html(`更新于：${result.updatetime}`);
+                    $(".li2").html(`注意事项：${result.index[0].detail}`);
+                    $(".li4").html(`建议：${result.index[0].iname}+${result.index[0].ivalue}`);
+
+                $(".li7").html(`更新于：${result.updatetime}`);
+                $(".li8").html(`注意事项：${result.index[1].detail}`);
+                $(".li10").html(`建议：${result.index[1].iname}+${result.index[1].ivalue}`);
+
+                var a=document.querySelector(".a");
+                var b=document.querySelector(".b");
+                a.onmouseover=function(){
+                    a.style.display="none";
+                    b.style.display="block";
+                }
+                b.onmouseout=function(){
+                    b.style.display="none";
+                    a.style.display="block";
+                }
+
+            }
+        })
+
+
+    $(document).ajaxComplete(function(){
+        $(".process").animate({width:"100%"},function(){
+            $(this).css("width",0);
+        })
+    })
+    });
+</script>
+
+<!--<script>-->
+    <!--var time=document.querySelector("time");-->
+    <!--var year=document.querySelector("time span:nth-child(1)");-->
+    <!--var month=document.querySelector("time span:nth-child(2)");-->
+    <!--var day=document.querySelector("time span:nth-child(3)");-->
+    <!--var date=new Date();-->
+    <!--year.innerHTML=date.getFullYear()+"年";-->
+    <!--month.innerHTML=date.getMonth()+1+"月";-->
+    <!--day.innerHTML=date.getDay()+"日";-->
+
+<!--</script>-->
+</html>
